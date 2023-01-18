@@ -7,4 +7,4 @@ Aplikasi ini dibuat untuk memudahkan user dalam berkirim pesan menggunakan API w
 Aplikasi ini <b>belum sempurna</b> dan terus <b>masih dalam proses pengembangan</b>🙏
   
 ## Dukungan
-Terus dukung kami untuk menyermpurnakan ini semua👋.<br>Kontak saya di `atokkecenk@gmail.com`.
+Terus dukung kami untuk menyermpurnakan ini semua👋.<br>Kontak saya di `atokkecenk@gmail.com`
