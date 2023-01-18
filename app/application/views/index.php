@@ -1,0 +1,4 @@
+<?= $header ?>
+<?= $navigation ?>
+<?= $content ?>
+<?= $footer ?>
