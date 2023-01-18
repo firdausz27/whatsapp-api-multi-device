@@ -20,20 +20,12 @@ app.use(express.urlencoded({
   extended: true
 }));
 
-/**
- * BASED ON MANY QUESTIONS
- * Actually ready mentioned on the tutorials
- * 
- * The two middlewares above only handle for data json & urlencode (x-www-form-urlencoded)
- * So, we need to add extra middleware to handle form-data
- * Here we can use express-fileupload
- */
 app.use(fileUpload({
   debug: false
 }));
 
 app.get('/', (req, res) => {
-  res.sendFile('index-multiple-account.html', {
+  res.sendFile('index.html', {
     root: __dirname
   });
 });
