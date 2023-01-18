@@ -8,7 +8,7 @@ const { phoneNumberFormatter } = require('./helpers/formatter');
 const { body, validationResult } = require('express-validator');
 const fileUpload = require('express-fileupload');
 const axios = require('axios');
-var koneksi = require('./koneksi');
+var koneksi = require('./helpers/koneksi');
 const port = process.env.PORT || 8000;
 
 const app = express();
