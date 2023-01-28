@@ -9,6 +9,7 @@ const { body, validationResult } = require('express-validator');
 const fileUpload = require('express-fileupload');
 const axios = require('axios');
 var koneksi = require('./helpers/koneksi');
+const { response } = require('express');
 const port = process.env.PORT || 8000;
 
 const app = express();
@@ -418,14 +419,40 @@ app.get('/test-btn', async (req, res) => {
   };
 
   // send to test_jid
-  for (const component of [buttons_reply, buttons_reply_url, buttons_reply_call, buttons_reply_call_url]) await client.sendMessage(TEST_JID, component);
+  // for (const component of [buttons_reply, buttons_reply_url, buttons_reply_call, buttons_reply_call_url]) await client.sendMessage(TEST_JID, component);
 
   // send to test_group
   // for (const component of [buttons_reply, buttons_reply_url, buttons_reply_call, buttons_reply_call_url]) await client.sendMessage(TEST_GROUP, component);
 
-  const list = new List('test', 'click me', [section], 'title', 'footer')
-  client.sendMessage(TEST_JID, list);
+  // const list = new List('test', 'click me', [section], 'title', 'footer')
+  // client.sendMessage(TEST_JID, list);
   // await client.sendMessage(TEST_GROUP, list);
+
+  const _btn = new Buttons('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', [{ body: "Link", url: "https://wwebjs.dev" }], 'Title', 'Firdaus Zulkarnain');
+
+  client.sendMessage(TEST_JID, _btn).then(response => {
+    res.status(200).json({
+      status: true,
+      data: response
+    });
+  });
+});
+
+app.get('/get-chats', async (req, res) => {
+  const sender = '123';
+  const client = sessions.find(sess => sess.id == sender)?.client;
+
+  client.getChatLabels('62895608266103@c.us').then(response => {
+    res.status(200).json({
+      status: true,
+      data: response
+    });
+  }).catch(err => {
+    res.status(500).json({
+      status: false,
+      response: err
+    });
+  });
 });
 
 server.listen(port, function () {
